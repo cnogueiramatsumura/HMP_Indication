@@ -1,0 +1,47 @@
+﻿@model WebApp.Areas.Usuario.Models.Register.RegisterViewModel
+<link href="~/Scripts/Css/Login.css" rel="stylesheet" />
+
+<div class="main-wrapper">
+    <div class="wrapper">
+        <div class="image-logo">
+            <img src="~/Images/svg/Logo.svg" width="110" height="110" />
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })             
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control" } })          
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.sobrenome, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.sobrenome, new { htmlAttributes = new { @class = "form-control" } })             
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })             
+            </div>
+            
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.confirmPassword, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.confirmPassword, new { htmlAttributes = new { @class = "form-control" } })              
+            </div>
+
+            <div>
+                <input type="submit" value="Cadastrar" class="doingbtn" />
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,122 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #37454e;
+}
+
+.main-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    width: 500px;
+    border-radius: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-logo {
+    margin-bottom: 30px;
+}
+
+
+.validation-summary-errors > ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+}
+
+.div-input-values-btc {
+    width: 80%;
+    background-color: #4D616D;
+    border-radius: 15px;
+    border: none;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+#input-brl:focus, #input-amount:focus, #input-btc:focus {
+    outline: none;
+}
+
+#input-btc {
+    height: 50px;
+    border: none;
+    font-size: 18px;
+    color: white;
+    width: 80%;
+    text-align: center;
+    background-color: transparent;
+}
+
+.lbl-quantidade {
+    width: 20%;
+    position: absolute;
+    right: 0px;
+    background-color: #2E3C42;
+    height: 50px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 100;
+    margin: 0;
+    color:white;
+}
+
+.div-input-values {
+    width: 50%;
+    float: left;
+    position: relative;
+    margin: 18px 0;
+    text-align: center;
+}
+
+#input-brl, #input-amount {
+    width: 70%;
+    background-color: transparent;
+    color: #04AE8F;
+    border: none;
+    border-bottom: 1px dashed #04AE8F;
+    font-size: 19px;
+    text-align: center;
+}
+
+.div-input-values label {
+    color: #04AE8F;
+    position: absolute;
+    right: 5%;
+}
+
+#input-amount::-webkit-inner-spin-button, #input-amount::-webkit-outer-spin-button,
+#input-brl::-webkit-inner-spin-button, #input-amount::-webkit-outer-spin-button,
+#input-btc::-webkit-inner-spin-button, #input-amount::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.doingbtn {
+    display: block;
+    padding: 10px;
+    background-color: #6168c1;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    max-width: 280px;
+    width: 100%;
+    margin: 20px auto;
+    border: none;
+    font-size: 18px;
+}
+
+    .doingbtn:hover {
+        color: white;
+        text-decoration: none;
+    }

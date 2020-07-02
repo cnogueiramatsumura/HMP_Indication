@@ -1,0 +1,33 @@
+﻿@model DataAccess.ViewModels.SetKeysViewModel
+
+<link href="~/Scripts/Css/Dashboard.css?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]" rel="stylesheet" />
+<link href="~/Scripts/Css/setKeys.css?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]" rel="stylesheet" />
+
+<div class="main-wrapper">
+    <div class="wrapper">
+        <div class="image-logo">
+            <img src="~/Images/svg/Logo.svg" width="110" height="110" />
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.binanceKey, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.binanceKey, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.binanceSecret, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.binanceSecret, new { @class = "form-control" })
+            </div>
+
+            <div class="btns-setkeys">
+                <input id="testkeys" type="button" value="Testar" class="btn btn-danger btnsetkey" />
+                <input type="submit" value="Salvar" class="btn btn-primary btnsetkey" />
+            </div>
+        }
+    </div>
+</div>
+<script type="text/javascript" src="~/Scripts/Bundle/Binance.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>

@@ -1,0 +1,135 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-color: #37454e;
+}
+
+.main-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    width: 500px;
+    border-radius: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-logo {
+    margin-bottom: 30px;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+form {
+    width: 100%;
+}
+
+.validation-summary-errors > ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+}
+
+.doingbtn {
+    display: block;
+    padding: 10px;
+    background-color: #6168c1;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    max-width: 280px;
+    width: 100%;
+    margin: 20px auto;
+    border: none;
+    font-size: 18px;
+}
+
+    .doingbtn:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+.main-wrapper-email {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.display-email-log {
+    width: 150px;
+    height: 150px;
+    border-radius: 110px;
+    background-color: #0f242c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .display-email-log i {
+        font-size: 75px;
+        color: white;
+    }
+
+.link-enviado {
+    color: #4d57d7;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.desc-email {
+    text-align: center;
+}
+
+    .desc-email h2 {
+        color: #aab2b5;
+        font-size: 29px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .desc-email p {
+        color: #aab2b5;
+        font-size: 16px;
+        font-weight: 200;
+        margin-bottom: 2px;
+    }
+
+#resend-email {
+    cursor: pointer;
+}
+
+
+.btns-setkeys {
+    width: 55%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnsetkey {
+    width: 40%;
+}
+
+#div-perdeusenha {
+    width: 100%;
+    max-width: 280px;
+}
+
+    #div-perdeusenha a {
+        font-size: 22px;
+        color: #6168c1
+    }

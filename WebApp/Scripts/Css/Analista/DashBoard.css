@@ -1,0 +1,71 @@
+﻿.admin-notificacoes {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    width: 100%;
+}
+
+.main-wrapper {
+    margin: 50px 0;
+    color: white;
+    width: 100%;
+}
+
+#Actions {
+    margin: 0 auto;
+    min-width: 300px;
+    max-width: 300px;
+    text-align: center
+}
+
+.Analista, .Usuario, .Sistema {
+    margin: 50px 0;
+}
+
+.btn-alterar {
+    color: #6168c1;
+    font-size: 20px;
+}
+
+.stmpConfig, .licencaConfig {
+    border: 2px solid white;
+    border-radius: 10px;
+    position: relative;
+    min-height: 30px;
+}
+
+.stmpConfig, .licencaConfig {
+    margin-top: 100px;
+    padding: 40px;
+}
+
+.label-legend {
+    position: absolute;
+    top: -28px;
+    left: 25px;
+    font-size: 22px;
+    padding: 10px;
+    background-color: #37454e;
+}
+
+.form-wrapper {
+    margin: 0 auto;
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.form-content {
+    margin: 25px 60px;
+    padding: 15px;
+}
+
+
+.licencaConfig {
+    margin-top: 40px;
+}
+
+
+.form-control:disabled {
+    background-color: #7f7c7c;
+    color: white;
+}

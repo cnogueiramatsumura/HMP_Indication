@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{50F3795E-E692-405C-AC28-8686C00E4789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{EB41A0E2-0D7E-4929-9FB9-EAC86C032970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{4C48E1BD-08EA-4CAB-A306-BE7D3DB6A39A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50F3795E-E692-405C-AC28-8686C00E4789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F3795E-E692-405C-AC28-8686C00E4789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F3795E-E692-405C-AC28-8686C00E4789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F3795E-E692-405C-AC28-8686C00E4789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB41A0E2-0D7E-4929-9FB9-EAC86C032970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB41A0E2-0D7E-4929-9FB9-EAC86C032970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB41A0E2-0D7E-4929-9FB9-EAC86C032970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB41A0E2-0D7E-4929-9FB9-EAC86C032970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C48E1BD-08EA-4CAB-A306-BE7D3DB6A39A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C48E1BD-08EA-4CAB-A306-BE7D3DB6A39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C48E1BD-08EA-4CAB-A306-BE7D3DB6A39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C48E1BD-08EA-4CAB-A306-BE7D3DB6A39A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16F4337A-7263-4E96-9552-ACD3567059EC}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/newcnogueiramatsumura
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DataAccess\\DataAccess.csproj
+		SccProjectName1 = DataAccess
+		SccLocalPath1 = DataAccess
+		SccProjectUniqueName2 = WebAPI\\WebAPI.csproj
+		SccProjectName2 = WebAPI
+		SccLocalPath2 = WebAPI
+		SccProjectUniqueName3 = WebApp\\WebApp.csproj
+		SccProjectName3 = WebApp
+		SccLocalPath3 = WebApp
+	EndGlobalSection
+EndGlobal

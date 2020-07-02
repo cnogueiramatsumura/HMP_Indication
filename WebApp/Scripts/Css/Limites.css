@@ -1,0 +1,39 @@
+﻿.div-table-limits {
+    margin: 60px auto;
+}
+
+.table-Limites {
+    color: white;
+}
+
+    .table-Limites tr {
+        text-align: center;
+    }
+
+
+    .table-Limites thead tr {
+        font-size: 22px;
+        color: #0e56b3;
+        margin-bottom: 15px;
+    }
+
+        .table-Limites thead tr th {
+            border-top: none;
+        }
+
+    .table-Limites tbody tr {
+        color: white;
+        line-height: 2em;
+        font-size: 18px
+    }
+
+        .table-Limites tbody tr td {
+            border: none !important;
+        }
+
+.total-sum-btc
+{
+    border-top:2px solid white;
+    font-size:25px !important;
+    text-align:right;
+}

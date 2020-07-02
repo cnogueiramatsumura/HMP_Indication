@@ -1,0 +1,40 @@
+﻿@model  DataAccess.ViewModels.AlterarSenhaViewModel
+
+@{
+    Layout = "~/Areas/Usuario/Views/Shared/_LayoutSemLimite.cshtml";
+}
+
+<link href="~/Scripts/Css/Login.css" rel="stylesheet" />
+
+<div class="main-wrapper">
+    <div class="wrapper">
+        <div class="image-logo">
+            <img src="~/Images/svg/Logo.svg" width="110" height="110" />
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.SenhaAntiga, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.SenhaAntiga, new { @class = "form-control" })
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.NovaSenha, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.NovaSenha, new { @class = "form-control" })
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.ConfirmarSenha, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.ConfirmarSenha, new { @class = "form-control" })
+            </div>
+
+            <div>
+                <input type="submit" value="Confirmar" class="doingbtn" />
+            </div>
+        }
+    </div>
+</div>

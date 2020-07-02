@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DataAccess.Entidades.Chamada>
+
+@{
+    ViewBag.Title = "Abertas";
+}
+
+<link href="~/Scripts/Css/Analista/ChamadasAbertas.css" rel="stylesheet" />
+
+<div>
+    <table class="table table-entrada">
+        <caption>Lista Chamadas Aguardando Entrada</caption>
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Qtd Clientes</th>
+                <th>Symbol</th>
+                <th>Preço Entrada</th>
+                <th>Preço Gain</th>
+                <th>Preço Loss</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(x => x.ChamadaStatus_Id == 1))
+            {
+                <tr data-chamadaId="@item.Id">
+                    <td>@item.Id</td>
+                    <td><a href="@Url.Action("Posicionados", "Chamada", new {chamadaId = item.Id })">@item.Ordems.Where(x => x.MainOrderID == null).Count()</a></td>
+                    <td>@item.Symbol.symbol</td>
+                    <td>@item.PrecoEntrada</td>
+                    <td>@item.PrecoGain</td>
+                    <td>@item.PrecoLoss</td>
+                    @if (item.ChamadaStatus_Id == 1)
+                    {
+                        <td><button data-id="@item.Id" class="btn btn-primary cancelar-chamada">Cancelar</button></td>
+                    }
+                    else
+                    {
+                        <td><a href="@Url.Action("EditarChamada","Chamada", new { chamadaId = item.Id})" class="btn btn-primary">Editar</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <table class="table table-gainloss">
+        <caption>Lista Chamadas Aguardando Gain/Loss</caption>
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Qtd Clientes</th>
+                <th>Symbol</th>
+                <th>Preço Entrada</th>
+                <th>Preço Gain</th>
+                <th>Preço Loss</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="text-white">
+            @foreach (var item in Model.Where(x => x.ChamadaStatus_Id == 2))
+            {
+                <tr data-chamadaId="@item.Id">
+                    <td>@item.Id</td>
+                    <td><a class="" href="@Url.Action("Posicionados", "Chamada", new {chamadaId = item.Id })"> @item.Ordems.Where(x => x.MainOrderID == null).Count()</a></td>
+                    <td>@item.Symbol.symbol</td>
+                    <td>@item.PrecoEntrada</td>
+                    <td>@item.PrecoGain</td>
+                    <td>@item.PrecoLoss</td>
+                    @if (item.ChamadaStatus_Id == 1)
+                    {
+                        <td><button data-id="@item.Id" class="btn btn-primary cancelar-chamada">Cancelar</button></td>
+                    }
+                    else
+                    {
+                        <td><a href="@Url.Action("EditarChamada","Chamada", new { chamadaId = item.Id})" class="btn btn-primary">Editar</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+      var ApiDomainName = '@ViewBag.ApiDomainName'
+</script>
+
+<script type="text/javascript" src="~/Scripts/Bundle/ChamadasAbertas.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>

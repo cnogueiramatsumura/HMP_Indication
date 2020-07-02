@@ -1,0 +1,65 @@
+﻿@model WebApp.Areas.Analista.Models.DashboardViewModel
+@{
+    Layout = "~/Areas/Analista/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Scripts/Css/Analista/DashBoard.css" />
+
+<div class="row">
+    <div class="admin-notificacoes">
+        @if (Model.DataExpiracaoSSL < DateTime.Now)
+        {
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <h4 class="alert-heading">Perigo!</h4>
+                <p>Certificado SSL vencido, Certificado obrigatorio para o sistema funcionar.</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else if (Model.DataExpiracaoSSL < DateTime.Now.AddDays(45))
+        {
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <h4 class="alert-heading">Atenção!</h4>
+                <p>  Seu Certificado SSL esta quase expirando faltam @(Model.DataExpiracaoSSL.Subtract(DateTime.Now).Days) dias, renove seu certificado ou seu sistema pode ficar inoperante!</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Sucesso!</h4><hr />
+                <p>Seu Certificado SSL ainda esta valido por @(Model.DataExpiracaoSSL.Subtract(DateTime.Now).Days) dias</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="main-wrapper row text-center">
+        <div class="col-6">
+            <div>
+                @if (Model.DataExpiracaoSSL < DateTime.Now)
+                {
+                    <p class="text-danger">Validade do SSL => @Model.DataExpiracaoSSL.ToString("dd/MM/yy")</p>
+                }
+                else if (Model.DataExpiracaoSSL < DateTime.Now.AddDays(15))
+                {
+                    <p class="text-warning">Validade do SSL => @Model.DataExpiracaoSSL.ToString("dd/MM/yy")</p>
+                }
+                else
+                {
+                    <p>Validade do SSL => @Model.DataExpiracaoSSL.ToShortDateString() </p>
+                }
+            </div>
+        </div>
+        <div class="col-6">
+            <p> Valor Licença => @WebApp.Helpers.Helper.BrazilianCurrency(Model.Serverconfig.PrecoLicenca)</p>        
+        </div>
+    </div>
+
+    @Html.Partial("PV_MapaTest")
+</div>

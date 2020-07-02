@@ -1,0 +1,46 @@
+﻿@model DataAccess.ViewModels.ComprarBNBViewModel
+@{
+    Layout = "~/Areas/Usuario/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Scripts/Css/ComprarBNB.css?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]" rel="stylesheet" />
+
+<div class="main-wrapper">
+    <div class="wrapper">
+        <div class="image-logo">
+            <img src="~/Images/svg/Logo.svg" width="110" height="110" />
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            <div class="card-ComprarBNB">
+                <div>
+                    <div class="div-input-values-btc">
+                        <input type="text" id="input-btc" />
+                        <label class="lbl-quantidade">BTC</label>
+                    </div>
+                    <div class="div-input-values">
+                        <input type="text" id="input-brl" />
+                        <label>BRL</label>
+                    </div>
+                    <div class="div-input-values">
+                        <input name="qtd" id="input-amount" type="text" min="" max="" />
+                        <label>Qtd</label>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <p class="text-center mt-2 mb-2 text-danger"><span id="amountvalidademsg"></span> </p>
+                </div>
+
+                <div>
+                    <input type="submit" value="Comprar" class="doingbtn" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/Bundle/CompraBNB.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>

@@ -1,0 +1,55 @@
+﻿.main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    color: white;
+    text-align: center;
+}
+
+.display-saldo, .p-aceitos, .p-Gain, .p-Loss {
+    margin: 30px;
+}
+
+.display-saldo {
+    font-size: 40px;
+}
+
+.Gain, .p-Gain {
+    color: #6ec077;
+}
+
+.Loss, .p-Loss {
+    color: #cc5859;
+}
+
+.p-aceitos {
+    font-size: 22px;
+}
+
+.p-Gain, .p-Loss, .p-Mercado {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.partial-Ordens {
+    margin-top: 80px;
+}
+
+.drop-periodo {
+    margin: 0 auto;
+    width: 400px;
+    text-align-last: center;
+    max-width: 400px;
+}
+
+.data-inicio, .data-fim {
+    width: 190px;
+    display: inline;
+}
+
+#btn-buscar-relatorio {
+    width: 400px;
+}
+
+

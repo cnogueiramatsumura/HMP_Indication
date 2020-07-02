@@ -1,0 +1,267 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.control-label {
+    color: white;
+    font-size: 18px;
+}
+
+body {
+    background-color: #37454E;
+    padding-top: 60px;
+}
+
+
+/*#region NavBar */
+.navbar {
+    background-color: #2B363E;
+    height: 60px;
+    -webkit-box-shadow: 0px 1px 2px #37454E;
+    -moz-box-shadow: 0px 1px 2px #37454E;
+    box-shadow: 0px 1px 1px #37454E;
+}
+
+.div-navbar {
+    display: block;
+    width: 70%;
+    padding: 0;
+}
+
+.navbar-nav {
+    display: block;
+}
+
+    .navbar-nav > li {
+        display: inline-block;
+        vertical-align: bottom;
+    }
+
+.img-logo-dashboard {
+    height: 50px;
+    margin: 0 40px;
+}
+
+.navbar-link {
+    display: inline-block !important;
+    padding: 0 10px;
+    font-size: 22px;
+    vertical-align: bottom;
+}
+
+.meu-navbar-right {
+    width: 30%;
+    color: white;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.display-limits {
+    padding: 0px;
+    width: 70%;
+    text-align: center;
+}
+
+    .display-limits p:first-child {
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+
+#display-btc-value, #display-brl-value {
+    display: inline-block;
+    padding: 1px 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #4D616D;
+    margin: 0;
+    height: 35px;
+}
+
+#display-brl-value {
+    line-height: 35px;
+}
+
+.uil-bitcoin {
+    color: #2BB1CF;
+    font-size: 20px;
+}
+
+.div-user-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.username {
+    font-size: 15px;
+}
+
+.mytogledropdown {
+    cursor: pointer;
+}
+
+.dropdown-user {
+    background-color: #21292f;
+    color: white;
+    text-align: center;
+}
+
+.expira-em {
+    border-bottom: 2px solid white;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+}
+
+    .expira-em > p {
+        margin-bottom: 2px;
+    }
+
+
+/*#endregion NavBar */
+
+/*#region Width*/
+@media (max-width: 1600px) {
+
+}
+
+@media (max-width: 1440px) {
+    .navbar-link {
+        padding: 0 9px;
+        font-size: 18px;
+    }
+
+    #display-btc-value, #display-brl-value {
+        padding: 1px 8px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+
+    .navbar-link {
+        padding: 0 9px;
+        font-size: 15px;
+    }
+
+    #display-btc-value, #display-brl-value {
+        padding: 1px 7px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .navbar-link {
+        padding: 0 5px;
+        font-size: 14px;
+    }
+
+    #display-btc-value, #display-brl-value {
+        padding: 1px 7px;
+        font-size: 13px;
+    }
+}
+
+/*#endregion Width*/
+
+/*#region height*/
+@media (min-height: 768px) {
+    body {
+        padding-top: 80px;
+    }
+
+    /*#region NavBar */
+    .navbar {
+        height: 80px;
+    }
+
+    .img-logo-dashboard {
+        height: 70px;
+        width: 70px;
+        margin: 0 40px;
+    }
+    /*#endregion NavBar */
+}
+
+@media (min-height: 900px) {
+    body {
+        padding-top: 100px;
+    }
+
+    /*#region NavBar */
+    .navbar {
+        height: 100px;
+    }
+
+    .img-logo-dashboard {
+        width: 80px;
+        height: 80px;
+        margin: 0 40px;
+    }
+
+    .display-limits p:first-child {
+        margin-bottom: 5px;
+    }
+    /*#endregion NavBar */
+}
+/*#endregion height*/
+
+.div-table-limits {
+    margin: 60px auto;
+}
+
+.table-Limites {
+    color: white;
+}
+
+    .table-Limites tr {
+        text-align: center;
+    }
+
+
+    .table-Limites thead tr {
+        font-size: 22px;
+        color: #0e56b3;
+        margin-bottom: 15px;
+    }
+
+        .table-Limites thead tr th {
+            border-top: none;
+        }
+
+    .table-Limites tbody tr {
+        color: white;
+        line-height: 2em;
+        font-size: 18px
+    }
+
+        .table-Limites tbody tr td {
+            border: none !important;
+        }
+
+.total-sum-btc {
+    border-top: 2px solid white;
+    font-size: 25px !important;
+    text-align: right;
+}

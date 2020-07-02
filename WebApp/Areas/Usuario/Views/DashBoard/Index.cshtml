@@ -1,0 +1,236 @@
+﻿@model WebApp.Areas.Usuario.Models.DashBoard.DashBoardViewModel
+@using WebApp.Helpers
+
+<link href="~/Scripts/Css/DashBoard.css?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]" rel="stylesheet">
+<div class="row" style="color:white">
+    <button id="recolher-menu">></button>
+    <!-- #region Ver Status Posicionadas -->
+    <div class="col-9 posicionadas-content">
+        <div class="col-lg-10 col-xl-10 mx-auto posicionadas-notificacao"></div>
+        <div class="col-lg-10 col-xl-10 mx-auto posicionadas-lista">
+            <div class="classificacao">
+                <p><i class='uil uil-import'></i> Classificação <span class="float-right"><button id="filter-posicionadas" class="ultimofiltro">Ativas</button><button id="filter-finalizadas">Finalizadas</button><button id="filter-canceladas">Canceladas</button></span></p>
+            </div>
+            <div class="wrapper-table">
+                <table class="table-list-posicionadas">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Data</th>
+                            <th>Symbol</th>
+                            <th>Preco Entrada</th>
+                            <th>Status</th>
+                            <th>Gain</th>
+                            <th>Loss</th>
+                            <th>%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Ordems.Count == 0)
+                        {
+                            <tr>
+                                <td class='no-cliclable' colspan='8'> Não possui Ordens Posicionadas </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model.Ordems.OrderByDescending(x => x.Id))
+                            {
+                                <tr class="OrdensAtivas" data-status="@item.OrdemStatus_Id" data-symbol="@item.symbol" data-entrada="@item.PrecoEntrada" data-rangeEntrada="@item.RangeEntrada" data-gain="@(item.NewGain != null ? item.NewGain : item.PrecoGain)" data-loss="@(item.NewLoss != null ? item.NewLoss : item.PrecoLoss)" data-ordemId="@item.Id" data-qtd="@item.Quantidade" data-chamadaid="@item.chamada_Id" data-observacao="@item.Observacao" data-horario="@(item.OrdemStatus_Id == 1 ? item.DataCadastro: item.DataEntrada)">
+                                    <td>@item.chamada_Id</td>
+                                    <td>@Helper.BrazilianTime(item.DataCadastro).ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                    <td>@item.symbol</td>
+                                    <td>@item.PrecoEntrada</td>
+                                    @if (item.DataEntrada != null)
+                                    {
+                                        <td>@item.Descricao @Helper.BrazilianTime((DateTimeOffset)item.DataEntrada).ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Descricao</td>
+                                    }
+                                    <td>@WebApp.Helpers.Helper.PercentualGain(item.PrecoEntrada, item.NewGain != null ? (decimal)item.NewGain : item.PrecoGain)% <i class='fa fa-caret-up icon-arrowup'></i></td>
+                                    <td>@WebApp.Helpers.Helper.PercentualLoss(item.PrecoEntrada, item.NewLoss != null ? (decimal)item.NewLoss : item.PrecoLoss)% <i class='fa fa-caret-down icon-arrowdown'></i></td>
+                                    <td></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Ver Status Posicionadas -->
+    <!-- #region Ver Status Chamadas -->
+    <div class="col-9 chamadas-content" style="display:none">
+        <div class="chamadas-header">
+            <div>
+                <p style="margin-bottom:0"><i class="fas fa-user-circle"></i> <span>Doing Now</span> | <span id="tempo-chamada"> time </span><span id="fecharChamadas" class="float-right">X</span></p>
+            </div>
+            <div class="desc-ativo">
+                <p id="nome-ativo"> </p>
+                <p id="valor-mercado"> </p>
+            </div>
+            <div class="chamada-progress">
+                <p class="text-center"><span class="float-left loss"></span> <span class="entrada"></span> / <span id="rangeentrada"></span> <span class="float-right gain"></span></p>
+            </div>
+        </div>
+
+        <div id="myProgress">
+            <div id="barloos">
+                <div id="progress-loss"></div>
+            </div>
+            <div id="bargain">
+                <div id="progress-gain"></div>
+            </div>
+        </div>
+
+        <div class="chamadas-body">
+            <div id="show-observacao" data-container="body" data-toggle="popover" title="Observação" data-content="">
+                <p>i</p>
+            </div>
+
+            <div id="show-tradeview">
+                <a id="link-tradeview" href="https://www.tradingview.com/symbols/BNBBTC/?exchange=binance" target="_blank"><img src="~/Images/svg/candlestick.svg" /></a>
+            </div>
+
+            <div class="chamadas-body-wrapper">
+
+                <div class="m-auto card-percentual-risco">
+                    <p class="m-0"><span id="desc-objetivo">objetivo</span><span id="desc-risco">risco</span></p>
+                    <p><span id="valor-objetivo"><i class="fa fa-caret-up"></i></span> <span id="valor-risco"><i class="fa fa-caret-down"></i></span></p>
+
+                    <div class="desc-valores-chamada">
+                        <p class="desc-entrada"><span id="icon-entrada"></span><span>Entrada</span> <span class="float-right entrada"></span></p>
+                        <p class="desc-gain"><span id="icon-gain"></span><span>Gain</span> <span class="float-right gain"></span></p>
+                        <p class="desc-loss"><span id="icon-loss"></span><span>Loss</span> <span class="float-right loss"></span></p>
+                        <p class="desc-newgain d-none"><span></span><span>New Gain</span> <span class="float-right newgain"></span></p>
+                        <p class="desc-newloss d-none"><span></span><span>New Loss</span> <span class="float-right newloss"></span></p>
+                    </div>
+                </div>
+
+                <div class="m-auto card-aceitarchamada">
+                    <div>
+                        <div class="div-input-values-btc">
+                            <input type="number" id="input-btc" />
+                            <label class="lbl-quantidade">BTC</label>
+                        </div>
+                        <div class="div-input-values">
+                            <input type="number" id="input-brl" />
+                            <label>BRL</label>
+                        </div>
+                        <div class="div-input-values">
+                            <input name="amount" id="input-amount" type="number" min="" max="" />
+                            <label>Qtd</label>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <p class="text-center mt-2 mb-2"><span id="amountvalidademsg"></span> </p>
+                    </div>
+                    <div class="desc-total-amount ">
+                        <div class="botoespercentual">
+                            <button id="perc-indicado" class="d-none"></button> <button>25%</button> <button>50%</button> <button>75%</button> <button>100%</button>
+                        </div>
+                    </div>
+                    <div class="range-slider">
+                        <input id="range-input" type="range" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <input class="d-none" type="number" id="chamadaId" />
+                        <input class="d-none" type="number" id="ordemId" />
+                        <p class="text-center"><button id="btn-executar-indicacao" type="submit">Executar Indicação</button></p>
+                        <p class="text-center"><button class="d-none" id="btn-cancelar-entrada" type="submit">Cancelar</button></p>
+                        <p class="text-center"><button class="d-none" id="btn-sair-mercado" type="submit">Vender Agora</button></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Ver Status Chamadas -->
+    <!-- #region Menu Lateral -->
+    <div class="col-3 menu-chamadas">
+        <div class="classificacao-chamadas">
+            <button id="filter-chamada-abertas" class="ultimofiltro">Abertas</button> <button id="filter-chamada-encerradas">Encerradas</button> <button id="filter-chamada-recusadas">Recusadas</button>
+        </div>
+        <div id="painel-canceladas">
+            @foreach (var item in Model.ChamadasCanceladas)
+            {
+                <div class="card-cancelar" data-ordemId="@item.OrdemId" data-entrada="@item.PrecoEntrada" data-rangeentrada="@item.RangeEntrada" data-gain="@item.PrecoGain" data-loss="@item.PrecoLoss" data-qtd="@item.Quantidade" data-observacao="@item.Observacao" data-symbol="@item.Symbol" data-chamadaid="@item.Chamada_Id" data-cancelamentochamadaid="@item.id">
+                    <div>
+                        <h3 class="header-cancelar">Cancelar @item.baseAsset / @item.quoteAsset</h3>
+                    </div>
+                    <div class="div-buttons-edicao">
+                        <button class="btn-visualizar-cancelamento">Visualizar</button><button class="btn-aceitar-cancelamento">Aceitar</button><button class="btn-recusar-cancelamento"><i class="uil uil-trash-alt"></i></button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div id="painel-editadas">
+            @foreach (var item in Model.ChamadaEditadas)
+            {
+                <div class="card-Edicao" data-chamadaid="@item.Chamada_Id" data-horario="@item.DataEdicao" data-entrada="@item.PrecoEntrada" data-rangeEntrada="@item.RangeEntrada" data-edicaoid="@item.Id" data-gain="@item.PrecoGain" data-loss="@item.PrecoLoss" data-symbol="@item.Symbol" data-newgain="@item.NewGain" data-newloss="@item.NewLoss">
+                    <div>
+                        <h3 class="header-Edicao">Edição @item.baseAsset / @item.quoteAsset</h3>
+                    </div>
+                    <div class="div-buttons-edicao">
+                        <button class="btn-visualizar-edicao">Visualizar</button><button class="btn-aceitar-edicao">Aceitar</button><button class="btn-recusar-edicao"><i class="uil uil-trash-alt"></i></button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div id="painel-chamadas">
+            @foreach (var item in Model.Chamadas)
+            {
+                <div class="card-chamadas" data-chamadaid="@item.Id" data-symbol="@item.Symbol.symbol" data-rangeEntrada="@item.RangeEntrada" data-entrada="@item.PrecoEntrada" data-gain="@item.PrecoGain" data-loss="@item.PrecoLoss" data-indicado="@item.PercentualIndicado" data-horario="@item.DataCadastro" data-observacao="@item.Observacao">
+                    <div class="card-chamada-header">
+                        <p>
+                            <i class="fas fa-user-circle"></i> <span> Doing Now | @item.Analista.Nome </span>
+                            @if (item.ChamadaStatus_Id == 1)
+                            {
+                                <span data-id="@item.Id" class="float-right recusarchamada">x</span>
+                            }
+                        </p>
+                        <p class="text-right counttime" data-horario="@item.DataCadastro.ToLocalTime().ToString("MM/dd/yyyy HH:mm:ss")">@WebApp.Helpers.Helper.showtime(item.DataCadastro)</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card-chamada-body-1">
+                                <p>@item.Symbol.baseAsset / @item.Symbol.quoteAsset</p>
+                                <p>@item.SymbolDescription</p>
+                                <p>@item.PrecoEntrada</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card-chamada-body-2 text-center">
+                                <p class="p-desc-objetivo">Objetivo</p>
+                                <p class="p-objetivo">@WebApp.Helpers.Helper.PercentualGain(item.PrecoEntrada, item.PrecoGain)% <i class="fa fa-caret-up icon-arrowup"></i></p>
+                                <p class="p-desc-risco">Risco</p>
+                                <p class="p-risco">@WebApp.Helpers.Helper.PercentualLoss(item.PrecoEntrada, item.PrecoLoss)% <i class="fa fa-caret-down icon-arrowdown"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (Model.ChamadaEditadas.Count == 0 && Model.Chamadas.Count == 0 && Model.ChamadasCanceladas.Count == 0)
+            {
+                <text>Nenhuma Chamada Ativa</text>
+            }
+        </div>
+    </div>
+    <!-- #endregion Menu Lateral -->
+</div>
+
+<script>
+    var jwtToken = '@HttpContext.Current.Session["token"]';
+    var ApiDomainName = '@ViewBag.ApiDomainName';
+    var listsymbol =   @Html.Raw(Json.Encode(Model.Ordems.ToList()));
+    var onesignalId = '@ViewBag.OneSignalAppId';
+</script>
+
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script src="~/Scripts/Bundle/DashBoard.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>
+

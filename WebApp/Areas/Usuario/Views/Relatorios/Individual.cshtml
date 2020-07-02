@@ -1,0 +1,40 @@
+﻿@model  DataAccess.ViewModels.RelatoriosViewModel
+@{
+    Layout = "~/Areas/Usuario/Views/Shared/_LayoutSemLimite.cshtml";
+}
+
+<link rel="stylesheet" href="~/Scripts/Css/classic.css" />
+<link rel="stylesheet" href="~/Scripts/Css/classic.date.css" />
+<link href="~/Scripts/Css/Relatorios.css" rel="stylesheet" />
+
+<div class="main-wrapper">
+    <div>
+        <h3 class="display-saldo @(Model.SaldoGanho >= 0 ? "Gain" : "Loss")">@Model.SaldoGanho BTC</h3>
+        <p> @Html.DropDownList("periodo", (SelectList)ViewBag.dropperiodos, "Selecione um perido", new { @class = "form-control drop-periodo" })</p>
+        <p> @Html.Editor("dataInicio", new { htmlAttributes = new { @class = "form-control data-inicio" } }) To @Html.Editor("dataFim", new { htmlAttributes = new { @class = "form-control data-fim" } })</p>
+        <p><button class="btn btn-primary" id="btn-buscar-relatorio">Buscar</button></p>
+        <div>
+            <p class="p-aceitos">@(Model.Gain.Count + Model.Loss.Count + Model.Vendidas.Count) Indicações Executadas</p>
+            <p class="p-Gain"><i class="fa fa-caret-up icon-arrowup"></i> @Model.Gain.Count() Stop Gain</p>
+            <p class="p-Loss"><i class="fa fa-caret-down icon-arrowdown"></i> @Model.Loss.Count() Stop Loss</p>
+            <p class="p-Mercado"><i class="fa fa-caret-down icon-arrowdown"></i> @Model.Vendidas.Count() Venda a Mercado</p>
+        </div>
+
+        <div class="partial-Ordens">
+            <div class="Partial-Gain d-none">
+                <p class="text-left">Stop Gain</p>
+                <p>@Html.Partial("Partial_Gain", Model.Gain)</p>
+            </div>
+            <div class="Partial-Loss d-none">
+                <p class="text-left">Stop Loss</p>
+                @Html.Partial("Partial_Loss", Model.Loss)
+            </div>
+            <div class="Partial-Mercado d-none">
+                <p class="text-left">Venda Mercado</p>
+                @Html.Partial("Partial_Mercado", Model.Vendidas)
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/Bundle/Individual.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>

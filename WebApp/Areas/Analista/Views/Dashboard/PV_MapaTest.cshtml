@@ -1,0 +1,117 @@
+﻿
+<div class="row text-white">
+    <div class="col-12">
+        <div>
+            <select id="Actions" class="form-control">
+                <optgroup label="Analista">
+                    <option value="CriarChamada">Criar Chamada</option>
+                    <option value="AnalistaCancelarChamada">Cancelar Chamada</option>
+                    <option value="AnalistaEditaChamada">Editar Chamada</option>
+                </optgroup>
+                <optgroup label="Usuario">
+                    <option value="AceitarChamada">Aceitar Chamada</option>
+                    <option value="CancelarOrdem">Cancelar Ordem</option>
+                    <option value="VenderMercado">Vender a Mercado</option>
+                </optgroup>
+                <optgroup label="Sistema">
+                    <option value="Entrada">Bateu Entrada</option>
+                    <option value="GainLoss">Bateu Gain ou Loss</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-12 text-center">
+        <div class="Analista">
+            <div class="CriarChamada tohide">
+                <h1>O Analista Cria Uma Chamada </h1>
+
+                <h3 class="text-warning">Cenario 1 = >Cliente Não Tomar nenhuma ação</h3>
+                <p>Ao bater o ponto de entrada a chamada deve sumir do painel de chamadas do usuario</p>
+
+                <h3 class="text-warning">Cenario 2 => >Cliente Aceitar a Chamada</h3>
+                <p>Chamada deve sumir do painel de chamadas do usuario e uma ordem aguardando o ponto de entrada deve aparecer no painel de ordems</p>
+            </div>
+
+            <div class="AnalistaCancelarChamada d-none tohide">
+                <h1>O Analista Cancela Chamada (Antes Entrada)</h1>
+
+                <h3 class="text-warning">Cenario 1 = > Antes do usuario Aceitar a Chamada</h3>
+                <p>A chamada deve sumir do painel de chamadas do usuario</p>
+
+                <h3 class="text-warning">Cenario 2 => Apos o usuario Aceitar a Chamada</h3>
+                <p>Uma indicação de cancelamento da ordem deve aparecer no painel do usuario</p>
+            </div>
+
+            <div class="AnalistaEditaChamada d-none tohide">
+                <h1>Editar chamada Loss e Gain (Apos Entrada)</h1>
+                <p class="text-info">Obs: Analista so pode Editar a ordem apos ter batido ponto de entrada, Caso tenha batido do ponto de entrada e nenhum cliente tenha aceitado a chamada, nao vai haver opção de editar a ordem</p>
+
+                <h3 class="text-warning">Cenario 1 = >Usuario Aceitou a Chamada e ainda esta posicionado</h3>
+                <p>O usuario ira receber uma notificação de ediçao da ordem, e tambem vai ter uma indicação de edição</p>
+
+                <h3 class="text-warning">Cenario 2 =>Usuario Aceitou a Chamada quando bateu entrada ele vendeu a Mercado</h3>
+                <p>Nenhuma ação a ser feita</p>
+            </div>
+        </div>
+
+        <div class="Usuario">
+            <div class="AceitarChamada d-none tohide">
+                <h1>O usuario aceita a Chamada (Antes Entrada)</h1>
+
+                <h3 class="text-warning">Cenario 1 = >Antes do usuario Aceitar a Chamada</h3>
+                <p>A chamada desaparece do painel de chamada  e cria uma ordem no statuso aguardando a entrada</p>
+            </div>
+
+            <div class="CancelarOrdem d-none tohide">
+                <h1>O usuario Cancela (Antes Entrada)</h1>
+
+                <h3 class="text-warning">Cenario 1 = > Cancelada Utilizando Painel CriptoStorm</h3>
+                <p>A ordem vai desaparecer do filtro de abertas e vai passar para o filtro de canceladas com status cancelada</p>
+
+                <h3 class="text-warning">Cenario 2 = > Cancelada Utilizando Painel Binance</h3>
+                <p>A ordem vai desaparecer do filtro de abertas e vai passar para o filtro de canceladas status cancelada</p>
+            </div>
+
+            <div class="VenderMercado d-none tohide">
+                <h1>O usuario vende uma ordem (Apos Entrada)</h1>
+
+                <h3 class="text-warning">Cenario 1 = > usuario vende a mercado</h3>
+                <p>Cancela a Ordem Gain/Loss e cria uma Ordem para vender a mercado</p>
+            </div>
+
+        </div>
+
+        <div class="Sistema">
+            <div class="Entrada d-none tohide">
+                <h1>Chamada Criada e Bateu Ponto de Entrada</h1>
+                <p class="text-info">Obs: Caso o Analista tenha criado indicação para cancelar a Ordem Esta indicaçao deve desaparecer</p>
+
+                <h3 class="text-warning">Cenario 1 = > Usuario não aceitou chamada</h3>
+                <p>A chamada desaparece e nao é mais possivél que o Usuario aceite aquela chamada</p>
+
+                <h3 class="text-warning">Cenario 2 = > Usuario Aceitou a chamada</h3>
+                <p>O Sistema automaticamente vai criar uma Ordem de Gain e Loss</p>
+
+                <h3 class="text-warning">Cenario 3 = > Usuario Aceitou a chamada e Cancelou a Ordem</h3>
+                <p>Nenhuma ação a ser feita</p>
+
+                <h3 class="text-warning">Cenario 4 = > O Sistema pode recusar a Ordem caso esta nao possua a quantidade desejada para execuçao neste momento</h3>
+                <p>A Ordem vai desaparecer do filtro de abertas e vai para o filtro canceladas com status Ordem Rejeitada</p>
+            </div>
+
+            <div class="GainLoss d-none tohide">
+                <h1>Bateu Gain ou Loss</h1>
+                <p class="text-info">Obs: Caso o Analista tenha criado indicação para Editar a Ordem Esta indicaçao deve desaparecer</p>
+
+                <h3 class="text-warning">Cenario 1 = > Realiza Gain ou Loss</h3>
+                <p>A Ordem vai desaparecer do filtro de abertas e vai para o filtro encerradas com status com status Gain Realizado ou Loss Realizado</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/Bundle/AnalistaDashboard.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>
+
+

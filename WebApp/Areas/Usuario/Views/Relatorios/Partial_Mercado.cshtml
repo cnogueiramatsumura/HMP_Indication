@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DataAccess.Serialized_Objects.RelatorioIndividual>
+@{
+    decimal total = 0;
+}
+
+<table class="table text-white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.symbol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCadastro)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PrecoEntrada)
+        </th>
+        <th>
+            @Html.DisplayName("Valor Venda")
+        </th>
+        <th>
+            @Html.DisplayName("Lucro/Prejuízo")
+        </th>
+        <th>
+            @Html.DisplayName("Percentual")
+        </th>
+        <th>
+            @Html.DisplayName("Analista")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        total += (decimal)item.PrecoVendaMercado - item.PrecoEntrada;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.symbol)
+            </td>
+            <td>
+                @item.DataCadastro.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecoEntrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecoVendaMercado)
+            </td>
+            <td class="@(item.PrecoVendaMercado > item.PrecoEntrada ? "Gain" : "Loss")">
+                @(item.PrecoVendaMercado - item.PrecoEntrada)
+            </td>
+            <td>
+                @if (item.PrecoVendaMercado > item.PrecoEntrada)
+                {
+                    @WebApp.Helpers.Helper.PercentualGain(item.PrecoEntrada, (decimal)item.PrecoVendaMercado);
+                }
+                else
+                {
+                    @WebApp.Helpers.Helper.PercentualLoss(item.PrecoEntrada, (decimal)item.PrecoVendaMercado);
+                }%
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.NomeAnalista)</td>
+        </tr>
+    }
+    <tr>
+        <td class="@(total > 0 ? "Gain" : "Loss") text-right" colspan="7"> Total: @total</td>
+    </tr>
+</table>

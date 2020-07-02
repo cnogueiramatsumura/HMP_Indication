@@ -1,0 +1,162 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+}
+
+.form-percent {
+    margin-left: 15px;
+    width: 60px;
+}
+
+/*Edit Gain Loss*/
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex: 1;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.card-Edicao {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+    flex: 1;
+    height: 100vh;
+    border-right: 1px solid white;
+    padding-right: 20px;
+}
+
+.flex-item-1 {
+    height: 30%;
+    background-color: #ff8600;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.desc-ativo {
+    padding-top: 25px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.flex-item-2 {
+    height: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.valor-mercado {
+    font-size: 22px;
+    text-align: center;
+}
+
+.precos-mercado {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 18px;
+    padding: 0 30px;
+}
+
+    .precos-mercado p {
+        margin-bottom: 0;
+    }
+
+
+#myProgress {
+    height: 25px;
+    width: 100%;
+    border: 1px solid grey;
+    background-color: #BFBFBF;
+}
+
+#barloos, #bargain {
+    width: 45%;
+    display: block;
+}
+
+#barloos {
+    float: left;
+    margin-left: 5%;
+    border-left: 4px solid #CE8A8A;
+    border-right: 2px solid white;
+}
+
+#progress-loss {
+    float: right;
+    display: block;
+    background-color: #CE8A8A;
+    width: 0%;
+    height: 23px;
+}
+
+#bargain {
+    float: right;
+    margin-right: 5%;
+    border-right: 4px solid #75CB7C;
+    border-left: 2px solid white;
+}
+
+#progress-gain {
+    display: block;
+    background-color: #75CB7C;
+    height: 23px;
+    width: 0%;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+form {
+    width: 100%;
+}
+
+.doingbtn {
+    display: block;
+    padding: 10px;
+    background-color: #6168c1;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    max-width: 280px;
+    width: 100%;
+    margin: 20px auto;
+    border: none;
+    font-size: 18px;
+}
+
+.display-msg {
+    font-size: 18px;
+    color: #d23545;
+    text-align: center;
+}
+
+ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+}
+
+
+.card-editados {
+    margin: 10% 0;  
+}
+    .card-editados h3 {
+        padding-bottom: 25px;
+    }
+
+.table tr td{
+    text-align:center;
+}

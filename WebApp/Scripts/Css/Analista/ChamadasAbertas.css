@@ -1,0 +1,25 @@
+﻿caption {
+    caption-side: top;
+}
+
+.table tr {
+    text-align: center;
+    color:white;
+}
+
+    .table tr button, .table tr a {
+        min-width: 100px;
+        padding: 5px 0;
+    }
+
+.table {
+    margin-top: 40px;
+}
+
+
+
+/*#region Posicionados */
+.main-wrapper {
+    margin-top: 40px;
+}
+/*#endregion */

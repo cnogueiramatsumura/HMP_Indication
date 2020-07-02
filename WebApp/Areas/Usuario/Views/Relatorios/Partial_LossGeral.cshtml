@@ -1,0 +1,78 @@
+﻿
+@model IEnumerable<DataAccess.Serialized_Objects.RelatorioGeral>
+<table class="table text-white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().symbol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().DataCadastro)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PrecoEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PrecoLoss)
+        </th>
+        <th>
+            @Html.DisplayName("Prejuízo")
+        </th>
+        <th>
+            @Html.DisplayName("Percentual")
+        </th>
+        <th>
+            @Html.DisplayName("Analista")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.symbol)
+    </td>
+    <td>
+        @item.DataCadastro.ToString("dd/MM/yyyy")
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PrecoEntrada)
+    </td>
+    <td>
+        @if (item.NewLoss != null)
+        {
+            @Html.DisplayFor(modelItem => item.NewLoss);
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.PrecoLoss);
+        }
+    </td>
+    <td class="Loss">
+        @if (item.NewLoss != null)
+        {
+            @(item.NewLoss - item.PrecoEntrada)
+        }
+        else
+        {
+            @(item.PrecoLoss - item.PrecoEntrada)
+        }
+    </td>
+    <td>
+        @if (item.NewLoss != null)
+        {
+            @WebApp.Helpers.Helper.PercentualGain(item.PrecoEntrada, (decimal)item.NewLoss);
+        }
+        else
+        {
+
+            @WebApp.Helpers.Helper.PercentualGain(item.PrecoEntrada, item.PrecoLoss);
+        }%
+    </td>
+    <td>@Html.DisplayFor(modelItem => item.NomeAnalista)</td>
+</tr>
+    }
+    <tr>
+        <td class="Loss text-right" colspan="7"> Total: @Model.Sum(x => (x.NewLoss != null ? x.NewLoss : x.PrecoLoss) - x.PrecoEntrada)</td>
+    </tr>
+</table>

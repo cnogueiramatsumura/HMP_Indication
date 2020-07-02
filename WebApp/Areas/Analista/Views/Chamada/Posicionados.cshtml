@@ -1,0 +1,60 @@
+﻿@model DataAccess.Entidades.Chamada
+
+
+
+<link href="~/Scripts/Css/Analista/ChamadasAbertas.css" rel="stylesheet" />
+
+<div class="main-wrapper">
+
+    <div class="mercado">
+        <h2 class="text-white"> @Model.Symbol.baseAsset / @Model.Symbol.quoteAsset </h2>    
+        <table class="table">
+            <caption>Chamada</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Data Cadastro</th>
+                    <th>Preço Entrada</th>
+                    <th>Preço Gain</th>
+                    <th>Preço Loss</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Id</td>
+                    <td>@Model.DataCadastro.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@Model.PrecoEntrada</td>
+                    <td>@Model.PrecoGain</td>
+                    <td>@Model.PrecoLoss</td>
+                    <td>@Model.ChamadaStatus.Descricao</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div>
+        <table class="table">
+            <caption>Lista de Usuarios</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Ordem ID</th>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ordem in Model.Ordems)
+                {
+                <tr>
+                    <td>@ordem.Id</td>
+                    <td>@ordem.Usuario.Email</td>
+                    <td>@ordem.DataCadastro.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@ordem.OrdemStatus.Descricao</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

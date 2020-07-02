@@ -1,0 +1,94 @@
+﻿@model  WebApp.Areas.Analista.Models.EditChamadasViewModel
+
+@{
+    ViewBag.Title = "index";
+}
+
+<link href="~/Scripts/Css/Analista/EditarChamada.css" rel="stylesheet" />
+
+<div class="main-wrapper">
+    <div class="col-8">
+        <div class="card-Edicao">
+            <div class="flex-item-1">
+                <p class="desc-ativo">@Model.symbol</p>
+                <p id="valor-mercado" class="valor-mercado"></p>
+                <div class="precos-mercado">
+                    <p>@Model.Loss</p>
+                    <p>@Model.Entrada</p>
+                    <p>@Model.Gain</p>
+                </div>
+            </div>
+            <div id="myProgress">
+                <div id="barloos">
+                    <div id="progress-loss"></div>
+                </div>
+                <div id="bargain">
+                    <div id="progress-gain"></div>
+                </div>
+            </div>
+            <div class="flex-item-2">
+                <p class="display-msg"></p>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(x => x.Chamada_Id);
+                    @Html.HiddenFor(x => x.Entrada);
+                    @Html.HiddenFor(x => x.Gain);
+                    @Html.HiddenFor(x => x.Loss);
+                    @Html.HiddenFor(x => x.symbol);
+
+                    <div class="form-wrapper">
+                        @Html.LabelFor(model => model.NewGain, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NewGain, new { htmlAttributes = new { @class = "form-control", @Value = "" } })
+                    </div>
+                    <div class="form-wrapper">
+                        @Html.LabelFor(model => model.NewLoss, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NewLoss, new { htmlAttributes = new { @class = "form-control", @Value = "" } })
+                    </div>
+                    <div class="form-wrapper">
+                        <input type="submit" value="Editar" class="doingbtn" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-4 overflow-auto">
+        <div class="card-editados text-white text-center">
+            <h3>@Model.symbol.ToUpper()</h3>
+        </div>
+        <div>
+            <table class="table text-white">
+                <thead>
+                    <tr>
+                        <td>Data</td>
+                        <td>Hora</td>
+                        <td>Gain</td>
+                        <td>Loss</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaEdicoes)
+                    {
+                        <tr>
+                            <td>@item.DataEdicao.ToLocalTime().ToString("dd/MM")</td>
+                            <td>@item.DataEdicao.ToLocalTime().ToString("HH:mm")</td>
+                            <td>@item.NewGain</td>
+                            <td>@item.NewLoss</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    var symbol = '@Model.symbol';
+    var _entrada = '@Model.Entrada';
+    var _gain = '@Model.Gain';
+    var _loss = '@Model.Loss'; 
+</script>
+
+
+
+<script type="text/javascript" src="~/Scripts/Bundle/EditarChamada.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>

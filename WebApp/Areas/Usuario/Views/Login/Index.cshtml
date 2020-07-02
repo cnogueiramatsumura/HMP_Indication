@@ -1,0 +1,38 @@
+﻿
+@model DataAccess.ViewModels.LoginViewModel
+
+@{
+    Layout = "~/Areas/Usuario/Views/Shared/_LayoutSemMenu.cshtml";
+}
+
+<link href="~/Scripts/Css/Login.css" rel="stylesheet" />
+<div class="main-wrapper">
+    <div class="wrapper">
+        <div class="image-logo">
+            <img src="~/Images/svg/Logo.svg" width="110" height="110" />
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-wrapper">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label" })
+                @Html.PasswordFor(model => model.password, new { @class = "form-control" })
+            </div>
+
+            <div class="form-wrapper">
+                <input type="submit" value="login" class="doingbtn" />
+                <a href="@Url.Action("Index","Register",new { area = "usuario"})" class="doingbtn">cadastrar</a>
+                <div id="div-perdeusenha">
+                    <a href="@Url.Action("PerdeuSenha","Register",new { area = "usuario"})" class="float-right">Perdeu Senha?</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,104 @@
+﻿@model  WebApp.Areas.Analista.Models.ChamadaViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Scripts/Css/Analista/CriarChamada.css" rel="stylesheet" />
+
+
+<div class="main-wrapper">
+    <div class="row">
+        <div class="col-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            
+                <input type="hidden" name="ValorMercado" id="ValorMercado" />
+
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.SymbolName, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.SymbolName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(x => x.SymbolName, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.SymbolDescription, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.SymbolDescription, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.PrecoEntrada, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.PrecoEntrada, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.RangeEntrada, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.RangeEntrada, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.PrecoGain, htmlAttributes: new { @class = "control-label " })
+                    <div class="d-flex flex-wrap">
+                        @Html.EditorFor(model => model.PrecoGain, new { htmlAttributes = new { @class = "form-control col-6" } })
+                        <div class="col-6 displayPercent">
+                            <div class="input-group">
+                                <label class="sr-only" for="percente-PrecoLoss">Username</label>
+                                <input type="number" step="0.1" min="0" max="100" class="form-percent form-control" id="percente-PrecoGain">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.PrecoLoss, htmlAttributes: new { @class = "control-label " })
+                    <div class="d-flex flex-wrap">
+                        @Html.EditorFor(model => model.PrecoLoss, new { htmlAttributes = new { @class = "form-control col-6" } })
+                        <div class="col-6 displayPercent">
+                            <div class="input-group">
+                                <label class="sr-only" for="percente-PrecoLoss">Username</label>
+                                <input type="number" step="0.1" min="0" max="100" class="form-percent form-control" id="percente-PrecoLoss">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="form-wrapper">
+                    @Html.LabelFor(model => model.PercentualIndicado, htmlAttributes: new { @class = "control-label " })
+                    @Html.EditorFor(model => model.PercentualIndicado, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+
+                <div class="form-wrapper">
+                    <input id="criar-chamada" type="submit" value="Criar Chamada" class="btn btn-primary w-100" />
+                </div>
+            }
+        </div>
+
+        <div id="showMarket-wrapper" class="col-6">
+            <div id="market-display">
+                <h3 class="text-white">Valor Mercado</h3>
+                <hr />
+                <h3 id="display-symbol"></h3>
+            </div>
+
+            <div id="market-circle">
+                <div id="market-circle-center">
+                    <p id="v-mercado"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="~/Scripts/Bundle/CriarChamada.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>
+

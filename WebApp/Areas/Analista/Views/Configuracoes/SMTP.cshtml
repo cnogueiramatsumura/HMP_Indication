@@ -1,0 +1,79 @@
+﻿@model DataAccess.ViewModels.Analista.UpdateSmtpViewModel
+
+<link rel="stylesheet" href="~/Scripts/Css/Analista/DashBoard.css" />
+<div class="main-wrapper">
+
+    <div id="alertas-msgs">
+        @if (HttpContext.Current.Request.HttpMethod == "POST" && ViewContext.ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <h4 class="alert-heading">Atenção!</h4>
+                <p>Voce solicitou a troca de servidor SMTP, mas para que o sistema se mantenha funcionando precisamos confirmar seu acesso a esse servidor</p>
+                <p>Acesse este email e prove que vc é o dono do servidor SMTP solicitado, verifique tambem as caixas de spam</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="stmpConfig">
+        <label class="label-legend">Configurações SMTP</label>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-content row">
+
+                <div class="col-6">
+                    <div class="form-wrapper">
+                        @Html.LabelFor(x => x.SmtpAdress)
+                        @Html.EditorFor(x => x.SmtpAdress, "acsda", new { htmlAttributes = new { @class = "form-control", @placeholder = "Smtp Adress" } })
+                    </div>
+                    <div class="form-wrapper">
+                        @Html.LabelFor(x => x.SmtpPort)
+                        @Html.EditorFor(x => x.SmtpPort, new { htmlAttributes = new { @class = "form-control", @placeholder = "Smtp Port" } })
+                    </div>
+
+                    <div class="form-wrapper">
+                        <p><button type="submit" class="btn btn-primary">Solicitar Troca</button> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalresetSMTP">Resetar SMTP</button></p>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-wrapper">
+                        @Html.LabelFor(x => x.SmtpUsername)
+                        @Html.EditorFor(x => x.SmtpUsername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Smtp Username" } })
+                    </div>
+                    <div class="form-wrapper">
+                        @Html.LabelFor(x => x.SmtpPassword)
+                        @Html.EditorFor(x => x.SmtpPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Smtp Password" } })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalresetSMTP" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Se aceitar o reset as configuraçoes de envio de email serão enviadas pelo email padrão, deseja resetar as configurações?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                <button id="reset-SMTP" type="button" class="btn btn-primary">Resetar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Bundle/AlterarConfig.js?v=@System.Configuration.ConfigurationManager.AppSettings["scriptversion"]"></script>

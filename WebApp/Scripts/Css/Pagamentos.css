@@ -1,0 +1,74 @@
+﻿h2 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+hr {
+    border-bottom: 1px solid white;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 60px);
+}
+
+.flex-item {
+    border-radius: 15px;
+    border: 1px solid white;
+    padding: 35px;
+}
+
+.wrapper-metodos-pagamentos {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper-item {
+    min-width: 200px;
+    border: 1px solid white;
+    border-radius: 15px;
+    margin: 20px auto;
+}
+
+.valorpagamento {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+
+.btn {
+    margin: 30px auto;
+    border-radius: 15px;
+    font-size: 18px;
+    padding: 12px;
+    width: 80%;
+    display: block;
+}
+
+.wrapper-Pagamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:50px;
+}
+
+.desc-pagamento {
+    font-size: 22px;
+    color: white;
+    margin-bottom:50px;
+}
+
+@media (min-height: 768px) {
+    .main {
+        height: calc(100vh - 80px);
+    }
+}
+
+@media (min-height: 900px) {
+    .main {
+        height: calc(100vh - 100px);
+    }
+}

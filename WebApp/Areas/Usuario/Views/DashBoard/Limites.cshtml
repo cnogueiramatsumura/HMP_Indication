@@ -1,0 +1,82 @@
+﻿@model WebApp.Areas.Usuario.Models.DashBoard.LimitesViewModel
+@{
+    var totalbt = 0m;
+    Layout = "~/Areas/Usuario/Views/Shared/_LayoutSemLimite.cshtml";
+}
+
+<link href="~/Scripts/Css/Limites.css" rel="stylesheet" />
+
+<div class="col-10 div-table-limits">
+    <table class="table table-sm table-Limites">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Disponível</th>
+                <th>Em Uso</th>
+                <th>Valor em BTC</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.balances.Count; i++)
+            {
+                var btcticker = Model.symbolTickers.Where(x => x.symbol == Model.balances[i].asset + "BTC").FirstOrDefault();
+                if (btcticker != null || i == 0)
+                {
+                    <tr>
+                        <td>@Model.balances[i].asset</td>
+                        <td>@string.Format("{0:N8}", Model.balances[i].free)</td>
+                        <td>@string.Format("{0:N8}", Model.balances[i].locked)</td>
+                        @if (i != 0)
+                        {
+                            if (Model.balances[i].free != 0)
+                            {
+                                var btcvalue = Model.symbolTickers.Where(x => x.symbol == Model.balances[i].asset + "BTC").FirstOrDefault().price * (decimal)(Model.balances[i].free + Model.balances[i].locked);
+                                totalbt += btcvalue;
+                                <td>@string.Format("{0:N8}", btcvalue)</td>
+                            }
+                            else
+                            {
+                                <td>0.00000000</td>
+                            }
+                        }
+                        else
+                        {
+                            var btcvalue = Model.balances[i].free + Model.balances[i].locked;
+                            totalbt += (decimal)btcvalue;
+                            <td>@string.Format("{0:F8}", Model.balances[i].free + Model.balances[i].locked)</td>
+
+                        }
+                    </tr>
+                }
+                else
+                {
+                    btcticker = Model.symbolTickers.Where(x => x.symbol == "BTC" + Model.balances[i].asset).FirstOrDefault();
+                    if (btcticker != null)
+                    {
+                        <tr>
+                            <td>@Model.balances[i].asset</td>
+                            <td>@string.Format("{0:N8}", Model.balances[i].free)</td>
+                            <td>@string.Format("{0:N8}", Model.balances[i].locked)</td>
+                            @if (Model.balances[i].free != 0)
+                            {
+                                var btcvalue = (decimal)(Model.balances[i].free + Model.balances[i].locked) / btcticker.price;
+                                totalbt += btcvalue;
+                                <td>@string.Format("{0:N8}", btcvalue)</td>
+                            }
+                            else
+                            {
+                                <td>0.00000000</td>
+                            }
+                        </tr>
+                    }
+                }
+            }
+            <tr class="total-sum-btc">
+                <td></td>
+                <td></td>
+                <td class="text-right">Total Btc:</td>
+                <td>@string.Format("{0:N8}", totalbt)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

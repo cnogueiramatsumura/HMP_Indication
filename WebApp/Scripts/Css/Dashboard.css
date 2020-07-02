@@ -1,0 +1,1007 @@
+﻿body {
+    overflow: hidden;
+}
+
+#recolher-menu {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    position: fixed;
+    top: 50%;
+    right: 25%;
+    height: 60px;
+    width: 28px;
+    background-color: #2B363E;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: #a3c3d8;
+    font-size: 30px;
+    z-index: 2;
+}
+
+/*#region Ordens Posicionadas */
+.posicionadas-content::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.posicionadas-content {
+    padding: 0;
+    background-color: #21292F;
+    height: calc(100vh - 60px);
+    position: absolute;
+    overflow: scroll;
+    left: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.posicionadas-notificacao {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+    min-height: 50px;
+}
+
+.notif-addChamada, .notif-removeChamda, .notif-error, .notif-entrada, .notif-CancelEntrada {
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0;
+    margin: 10px 0;
+    line-height: 40px;
+}
+
+.notif-addChamada {
+    background-color: #75CB7C;
+}
+
+.notif-removeChamda {
+    background-color: #E96161;
+}
+
+.notif-error {
+    background-color: #E96161;
+}
+
+.notif-entrada {
+    background-color: #396eeb;
+}
+
+.notif-CancelEntrada {
+    background-color: #396eeb;
+}
+
+.mostrarcancelamento {
+    cursor: pointer;
+}
+
+.notparagraf {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 98%;
+}
+
+.fechar-notificacao {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.posicionadas-lista {
+    min-height: 450px;
+    background-color: #37454E;
+    padding: 10px 20px;
+    border-radius: 15px;
+    max-height: calc(100vh - 140px);
+    overflow: hidden;
+}
+
+.classificacao {
+    height: 30px;
+    margin: 10px 30px 20px 30px;
+}
+
+    .classificacao button:hover {
+        color: white;
+        background-color: #565F9F;
+        border: 1px solid #565F9F;
+    }
+
+    .classificacao button {
+        background-color: transparent;
+        color: #565F9F;
+        border: 1px solid #565F9F;
+        border-radius: 7px;
+        padding: 7px;
+        margin: 0 5px;
+        min-width: 100px;
+        font-weight: 700;
+    }
+
+        .classificacao button.ultimofiltro {
+            color: white;
+            background-color: #565F9F;
+            border: 1px solid #565F9F;
+        }
+
+.wrapper-table::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.wrapper-table {
+    -ms-overflow-style: none;
+    max-height: 400px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.table-list-posicionadas {
+    width: 100%;
+    text-align: center;
+}
+
+    .table-list-posicionadas > tbody > tr {
+        color: white;
+        height: 50px;
+        border-bottom: 1px solid grey;
+        cursor: pointer;
+    }
+
+        .table-list-posicionadas > tbody > tr > :nth-child(2) {
+            text-transform: uppercase;
+        }
+
+    .table-list-posicionadas > thead > tr > th {
+        width: 12.5%;
+        text-align: center;
+    }
+
+    .table-list-posicionadas > tbody > tr > td {
+        width: 12.5%;
+        text-align: center;
+    }
+
+    .table-list-posicionadas tr:hover {
+        background-color: #807d7d;
+    }
+
+.color-gain {
+    color: #75CB7C;
+}
+
+.color-loss {
+    color: #E96161;
+}
+
+/*#endregion Ordens Posicionadas */
+
+/*#region Status Chamadas */
+.chamadas-content {
+    z-index: 3;
+}
+
+.chamadas-content {
+    padding: 0;
+    background-color: #21292F;
+    height: calc(100vh - 60px);
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+}
+
+.chamadas-header {
+    background-color: #1db9c5;
+    height: 125px;
+    width: 100%;
+    padding: 10px 15px 0 15px;
+}
+
+#fecharChamadas {
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.desc-ativo {
+    text-align: center;
+}
+
+#nome-ativo {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+#valor-mercado {
+    font-size: 14px;
+    margin-bottom: 5px;
+    min-height: 25px;
+}
+
+#myProgress {
+    height: 25px;
+    width: 100%;
+    border: 1px solid grey;
+    background-color: #BFBFBF;
+}
+
+#barloos, #bargain {
+    width: 45%;
+    display: block;
+}
+
+#barloos {
+    float: left;
+    margin-left: 5%;
+    border-left: 4px solid #CE8A8A;
+    border-right: 2px solid white;
+}
+
+#progress-loss {
+    float: right;
+    display: block;
+    /*background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0,0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, #09c, #f44);*/
+    background-color: #CE8A8A;
+    width: 0%;
+    height: 23px;
+}
+
+#bargain {
+    float: right;
+    margin-right: 5%;
+    border-right: 4px solid #75CB7C;
+    border-left: 2px solid white;
+}
+
+#progress-gain {
+    display: block;
+    background-color: #75CB7C;
+    height: 23px;
+    width: 0%;
+}
+
+#show-observacao {
+    position: absolute;
+    top: 330px;
+    left: 80px;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#show-tradeview {
+    position: absolute;
+    top: 330px;
+    left: 90%;
+}
+
+    #show-tradeview a img {
+        width: 35px;
+        height: 35px;
+    }
+
+.chamadas-body-wrapper {
+    height: calc(100vh - 210px);
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.card-percentual-risco {
+    width: 35%;
+    border: 3px solid grey;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#desc-risco, #desc-objetivo {
+    font-size: 20px;
+}
+
+#desc-objetivo {
+    color: #60A269;
+    margin-left: 10%;
+}
+
+#desc-risco {
+    color: #B75354;
+    margin-left: 40%;
+}
+
+#valor-risco, #valor-objetivo {
+    font-size: 25px;
+}
+
+#valor-objetivo {
+    color: #75CB7C;
+    margin-left: 20%;
+}
+
+#valor-risco {
+    color: #E96161;
+    margin-right: 5%;
+    float: right;
+}
+
+.desc-valores-chamada {
+    margin-top: 40px;
+    font-size: 22px;
+    padding: 0 30px;
+}
+
+#icon-entrada, #icon-gain, #icon-loss {
+    margin-right: 15px;
+}
+
+.card-aceitarchamada {
+    width: 35%;
+}
+
+.div-input-values-btc {
+    width: 80%;
+    background-color: #4D616D;
+    border-radius: 15px;
+    border: none;
+    margin: 0 auto;
+    position: relative;
+}
+
+#input-brl:focus, #input-amount:focus, #input-btc:focus {
+    outline: none;
+}
+
+#input-btc {
+    height: 50px;
+    border: none;
+    font-size: 18px;
+    color: white;
+    width: 80%;
+    text-align: center;
+    background-color: transparent;
+}
+
+.lbl-quantidade {
+    width: 20%;
+    position: absolute;
+    right: 0px;
+    background-color: #2E3C42;
+    height: 50px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 100;
+    margin: 0;
+}
+
+.div-input-values {
+    width: 50%;
+    float: left;
+    position: relative;
+    margin: 18px 0;
+    text-align: center;
+}
+
+#input-brl, #input-amount {
+    width: 70%;
+    background-color: transparent;
+    color: #04AE8F;
+    border: none;
+    border-bottom: 1px dashed #04AE8F;
+    font-size: 19px;
+    text-align: center;
+}
+
+.div-input-values label {
+    color: #04AE8F;
+    position: absolute;
+    right: 5%;
+}
+
+#input-amount::-webkit-inner-spin-button, #input-amount::-webkit-outer-spin-button,
+#input-brl::-webkit-inner-spin-button, #input-amount::-webkit-outer-spin-button,
+#input-btc::-webkit-inner-spin-button, #input-amount::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    box-shadow: none;
+}
+
+#amountvalidademsg {
+    color: #db4b4b;
+    font-size: 16px;
+}
+
+.botoespercentual button:hover {
+    color: white;
+    background-color: #565F9F;
+}
+
+.botoespercentual {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+    .botoespercentual button {
+        background-color: transparent;
+        color: #565F9F;
+        border: 1px solid #565F9F;
+        border-radius: 7px;
+        padding: 5px;
+        margin: 0 5px;
+        min-width: 15%;
+    }
+
+.desc-total-amount {
+    margin: 10px 0;
+}
+
+.range-slider {
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+#range-input::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 3px;
+    background-color: #4CAF50;
+}
+
+#range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 22px;
+    background-color: #4CAF50;
+    cursor: pointer;
+    margin-top: -9px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+#range-input:focus {
+    outline: none;
+}
+
+#range-input {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 3px;
+}
+
+#btn-executar-indicacao, #btn-sair-mercado, #btn-cancelar-entrada {
+    width: 95%;
+    border-radius: 15px;
+    height: 50px;
+    border: none;
+    background-color: #7573A8;
+    color: white;
+}
+
+
+/*#endregion Status Chamadas*/
+/*#region Menu Lateral*/
+.menu-chamadas {
+    height: 100%;
+    background-color: #2C373E;
+    position: absolute;
+    overflow-y: scroll;
+    right: 0;
+    padding: 20px 0px;
+    scrollbar-width: none;
+}
+
+.classificacao-chamadas {
+    margin: 0 0 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .classificacao-chamadas button:hover {
+        color: white;
+        background-color: #565F9F;
+    }
+
+    .classificacao-chamadas button {
+        background-color: transparent;
+        color: #565F9F;
+        border: 1px solid #565F9F;
+        border-radius: 7px;
+        padding: 5px;
+        margin: 0 3px;
+        width: 30%;
+    }
+
+        .classificacao-chamadas button.ultimofiltro {
+            color: white;
+            background-color: #565F9F;
+            border: 1px solid #565F9F;
+        }
+
+#painel-chamadas {
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.card-Edicao, .card-cancelar {
+    width: 70%;
+    margin: 15px auto;
+    padding: 20px 3px;
+    background-color: #21292f;
+    border-radius: 5px;
+}
+
+.header-Edicao, .header-cancelar {
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.div-buttons-edicao {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-visualizar-edicao, .btn-aceitar-edicao, .btn-recusar-edicao, .btn-visualizar-cancelamento, .btn-aceitar-cancelamento, .btn-recusar-cancelamento {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.card-chamadas, .card-chamadas-encerradas, .card-chamadas-recusadas {
+    width: 90%;
+    margin: 10px auto;
+    background-color: #21292F;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card-chamadas {
+    cursor: pointer;
+}
+
+.card-chamada-header:nth-child(1) {
+    text-align: left;
+}
+
+
+.card-chamadas-encerradas, .card-chamadas-recusadas {
+    cursor: default;
+}
+
+.card-chamada-header {
+    margin-bottom: 10px;
+}
+
+    .card-chamada-header p {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+.chamada-recusada {
+    cursor: default;
+}
+
+.recusarchamada {
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-chamada-body-1 p {
+    text-align: center;
+    line-height: 40px;
+    margin: 0;
+}
+
+    .card-chamada-body-1 p:nth-child(2) {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+.card-chamada-body-2 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin-top: 10px
+}
+
+    .card-chamada-body-2 p {
+        margin-bottom: 2px;
+    }
+
+        .card-chamada-body-2 p:nth-child(2n+1) {
+            text-align: left;
+            margin-left: 7px;
+        }
+
+.p-desc-objetivo, .p-desc-objetivo {
+    font-size: 12px;
+}
+
+.p-objetivo {
+    color: #4CAF50;
+    text-align: right;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.p-risco {
+    color: red;
+    margin-right: 5px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.icon-arrowup, .icon-arrowdown {
+    font-size: 25px;
+}
+
+.icon-arrowup {
+    vertical-align: text-bottom;
+}
+
+.icon-arrowdown {
+    vertical-align: text-top;
+}
+/*#endregion Menu Lateral*/
+
+
+/*#region Width*/
+
+@media screen and (max-width: 1680px) {
+
+    /*#region Posicionadas */
+    .table-list-posicionadas > thead {
+        font-size: 16px;
+    }
+
+    .table-list-posicionadas > tbody {
+        font-size: 12px;
+    }
+    /*#endregion Posicionadas */
+
+    /*#region Status Chamadas */
+    .card-percentual-risco {
+        width: 45%;
+        padding: 20px;
+    }
+
+    #desc-objetivo {
+        margin-left: 12%;
+    }
+
+    #desc-risco {
+        margin-left: 45%;
+    }
+
+    #valor-objetivo, #valor-risco {
+        font-size: 22px;
+    }
+
+    #valor-objetivo {
+        margin-left: 22%;
+    }
+
+    #valor-risco {
+        margin-right: 5%;
+    }
+    /*#endregion Status Chamadas*/
+
+    /*#region Menu Lateral*/
+    .classificacao-chamadas button {
+        font-size: 13px
+    }
+
+    .card-chamadas > .row > .col-6, .card-chamadas-encerradas > .row > .col-6, .card-chamadas-recusadas > .row > .col-6 {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    /*#endregion Menu Lateral*/
+}
+
+@media screen and (max-width: 1440px) {
+    /*#region Posicionadas */
+    /*#endregion Posicionadas */
+
+    /*#region Status Chamadas */
+
+    /*#endregion Status Chamadas*/
+
+    /*#region Menu Lateral*/
+    .classificacao-chamadas button {
+        font-size: 14px
+    }
+    /*#endregion Menu Lateral*/
+}
+
+@media screen and (max-width: 1280px) {
+
+    /*#region Posicionadas */
+    .table-list-posicionadas > thead {
+        font-size: 16px;
+    }
+
+    .table-list-posicionadas > tbody {
+        font-size: 12px;
+    }
+    /*#endregion Posicionadas */
+
+    /*#region Status Chamadas */
+    .card-percentual-risco {
+        width: 45%;
+        padding: 15px;
+    }
+
+    #desc-objetivo {
+        margin-left: 12%;
+    }
+
+    #desc-risco {
+        margin-left: 33%;
+    }
+
+    #valor-objetivo, #valor-risco {
+        font-size: 22px;
+    }
+
+    #valor-objetivo {
+        margin-left: 22%;
+    }
+
+    #valor-risco {
+        margin-right: 5%;
+    }
+    /*#endregion Status Chamadas*/
+
+    /*#region Menu Lateral*/
+    .classificacao-chamadas button {
+        font-size: 13px
+    }
+
+    .card-chamadas > .row > .col-6, .card-chamadas-encerradas > .row > .col-6, .card-chamadas-recusadas > .row > .col-6 {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    /*#endregion Menu Lateral*/
+}
+
+@media screen and (max-width: 1024px) {
+
+    /*#region Posicionadas */
+    .table-list-posicionadas > thead {
+        font-size: 13px;
+    }
+
+    .table-list-posicionadas > tbody {
+        font-size: 10px;
+    }
+    /*#endregion Posicionadas */
+
+    /*#region Status Chamadas */
+    .card-percentual-risco {
+        width: 45%;
+        padding: 5px;
+    }
+
+    #desc-risco {
+        margin-left: 20%;
+    }
+
+    #valor-objetivo, #valor-risco {
+        font-size: 20px;
+    }
+
+    #valor-objetivo {
+        margin-left: 20%;
+    }
+
+    #valor-risco {
+        margin-right: 6%;
+    }
+    /*#endregion Status Chamadas*/
+
+    /*#region Menu Lateral*/
+    .classificacao-chamadas button {
+        font-size: 12px
+    }
+
+    .card-chamada-header p {
+        font-size: 12px;
+    }
+
+    .card-chamada-body-1 p {
+        font-size: 13px;
+    }
+
+    .p-desc-objetivo, .p-desc-risco, .p-objetivo, .p-risco {
+        font-size: 12px;
+    }
+
+    .icon-arrowup, .icon-arrowdown {
+        font-size: 15px;
+    }
+    /*#endregion Menu Lateral*/
+}
+
+@media (min-width: 1600px) {
+
+    /*#region Status Chamadas */
+
+    /*#endregion Status Chamadas*/
+    /*#region Menu Lateral*/
+    .card-chamadas, .card-chamadas-encerradas, .card-chamadas-recusadas {
+        width: 75%;
+    }
+    /*#endregion Menu Lateral*/
+}
+/*#endregion Width*/
+
+/*#region Height*/
+
+@media (max-height: 768px) {
+    #show-observacao, #show-tradeview {
+        top: 155px;
+    }
+}
+
+@media (min-height: 768px) {
+
+    #recolher-menu {
+        height: 80px;
+    }
+
+    /*#region  Ver Status Posicionadas */
+    .posicionadas-content {
+        height: calc(100vh - 80px);
+    }
+
+    .notif-addChamada, .notif-removeChamda, .notif-error, .notif-entrada {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .posicionadas-lista {
+        min-height: 590px;
+        max-height: calc(100vh - 160px);
+    }
+
+    .classificacao {
+        margin-top: 30px;
+        height: 80px;
+    }
+
+    .table-list-posicionadas > tbody > tr {
+        color: white;
+        height: 70px;
+        border-bottom: 1px solid grey;
+        cursor: pointer;
+    }
+    /*#endregion  Ver Status Posicionadas */
+
+    /*#region Status Chamadas */
+    .chamadas-content {
+        height: calc(100vh - 80px);
+    }
+
+    .chamadas-header {
+        height: 175px;
+        padding: 10px 25px 0 25px;
+    }
+
+    .desc-ativo {
+        margin-top: 30px;
+    }
+
+    #nome-ativo {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .chamadas-body-wrapper {
+        height: calc(100vh - 280px);
+    }
+
+    #show-observacao, #show-tradeview {
+        top: 225px;
+    }
+
+    /*#endregion Status Chamadas*/
+
+    /*#region Menu Lateral*/
+    /*#endregion Menu Lateral*/
+}
+
+@media (min-height: 900px) {
+    #recolher-menu {
+        height: 100px;
+    }
+
+    /*#region  Ver Status Posicionadas */
+    .posicionadas-content {
+        height: calc(100vh - 100px);
+    }
+
+    .posicionadas-notificacao {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding: 0;
+        min-height: 110px;
+    }
+
+    .notif-addChamada, .notif-removeChamda, .notif-error, .notif-entrada {
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .posicionadas-lista {
+        min-height: 620px;
+        max-height: calc(100vh - 160px);
+    }
+
+    .classificacao {
+        height: 80px;
+    }
+
+    .wrapper-table {
+        max-height: 520px;
+    }
+
+    .table-list-posicionadas > tbody > tr {
+        height: 75px;
+    }
+    /*#endregion  Ver Status Posicionadas */
+
+    /*#region Status Chamadas */
+    .chamadas-content {
+        height: calc(100vh - 100px);
+    }
+
+    .chamadas-header {
+        height: 250px;
+        padding: 30px 35px 0 35px;
+    }
+
+    .desc-ativo {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    #valor-mercado {
+        font-size: 20px;
+    }
+
+    #valor-mercado {
+        min-height: 45px;
+    }
+
+    .chamadas-body-wrapper {
+        height: calc(100vh - 280px);
+    }
+
+    #show-observacao, #show-tradeview {
+        top: 330px;
+    }
+    /*#endregion Status Chamadas*/
+
+    /*#region Menu Lateral*/
+    /*#endregion Menu Lateral*/
+}
+
+/*#endregion Height*/
+
+
+
