@@ -32,10 +32,10 @@ namespace WebApp.Helpers
 
         public ApiBitPay(string Apitoken, string identity, bool useSandbox = true)
         {
-            token = useSandbox ? "85FaHXnP1PxjyBLX1bHjx4qBrWEGEmr4LuJHMZZ8gepW" : Apitoken;
+            token = useSandbox ? "test" : Apitoken;
             _baseUrL = useSandbox ? "https://test.bitpay.com" : "https://bitpay.com";
             redirectUrl = useSandbox ? "localhost/usuario/pagamentos/check" : "criptostorm.doingnow.com.br/usuario/pagamentos/check";
-            _identity = useSandbox ? "045f191592c25654130c9a14e6a88e5e9a0055093700e9c04a03b5825dc727fdcebd47948220732b64effbca9d920e368ab6f48cb75d0c093140eb4de361406bd3" : identity;
+            _identity = useSandbox ? "test" : identity;
             var ecParameters = SecNamedCurves.GetByName("secp256k1");
             EcParams = new ECDomainParameters(ecParameters.Curve, ecParameters.G, ecParameters.N, ecParameters.H);
             _privatekey = Helper.GetBitpayPrivateKeyFromFile(useSandbox);
