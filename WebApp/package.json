@@ -6,7 +6,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
-    "jquery-validation": "^1.19.1",
+    "jquery-validation": "^1.19.5",
     "jquery-validation-unobtrusive": "^3.2.11",
     "jquery.inputmask": "^3.3.4",
     "moment": "^2.24.0",
