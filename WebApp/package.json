@@ -9,7 +9,7 @@
     "jquery-validation": "^1.19.1",
     "jquery-validation-unobtrusive": "^3.2.11",
     "jquery.inputmask": "^3.3.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "pickadate": "^5.0.0-alpha.3",
     "popper.js": "^1.16.0",
     "signalr": "^2.4.1",
